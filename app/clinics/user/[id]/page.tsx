@@ -271,14 +271,6 @@ export default function UserClinicListingPage() {
                   Contact {clinic.name} directly to schedule your IV therapy session.
                 </p>
                 <div className="mt-4 flex flex-wrap gap-3">
-                  {clinic.phone && (
-                    <Button className="gap-2" asChild>
-                      <a href={`tel:${clinic.phone}`}>
-                        <Calendar className="h-4 w-4" />
-                        Call to Schedule
-                      </a>
-                    </Button>
-                  )}
                   {websiteHref && (
                     <Button variant="outline" className="gap-2" asChild>
                       <a href={websiteHref} target="_blank" rel="noopener noreferrer">
@@ -360,14 +352,6 @@ export default function UserClinicListingPage() {
                   <hr className="border-border" />
 
                   <div className="flex flex-col gap-2">
-                    {clinic.phone && (
-                      <Button className="w-full gap-2" asChild>
-                        <a href={`tel:${clinic.phone}`}>
-                          <Calendar className="h-4 w-4" />
-                          Book Appointment
-                        </a>
-                      </Button>
-                    )}
                     {websiteHref && (
                       <Button variant="outline" className="w-full gap-2" asChild>
                         <a href={websiteHref} target="_blank" rel="noopener noreferrer">
