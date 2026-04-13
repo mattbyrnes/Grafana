@@ -1,7 +1,5 @@
 import sharp from 'sharp';
 import https from 'https';
-import { writeFileSync } from 'fs';
-import { resolve } from 'path';
 
 async function downloadImage(url) {
   return new Promise((resolve, reject) => {
@@ -24,7 +22,7 @@ async function cropImage() {
   const metadata = await sharp(imageBuffer).metadata();
   console.log(`[v0] Original dimensions: ${metadata.width}x${metadata.height}`);
   
-  // Calculate center crop for a wide aspect ratio (approximately 16:9 or similar for hero)
+  // Calculate center crop for a wide aspect ratio (approximately 16:9 for hero)
   const targetAspect = 16 / 9;
   const currentAspect = metadata.width / metadata.height;
   
@@ -51,9 +49,9 @@ async function cropImage() {
     .jpeg({ quality: 90 })
     .toBuffer();
   
-  const outputPath = resolve(process.cwd(), 'public', 'restore-hero.jpg');
-  writeFileSync(outputPath, croppedBuffer);
-  console.log(`[v0] Saved cropped image to ${outputPath}`);
+  // Output base64 for v0 to write
+  const base64Data = croppedBuffer.toString('base64');
+  console.log(`[v0] CROPPED_IMAGE_BASE64:${base64Data}`);
 }
 
 cropImage().catch(err => {
