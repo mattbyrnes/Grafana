@@ -169,14 +169,14 @@ export const clinics: Clinic[] = [
     description: "Premium wellness center offering IV therapy and biohacking services on Atlanta's Westside.",
     longDescription: "Restore Hyper Wellness is dedicated to optimizing human performance through cutting-edge IV therapy and wellness services. Our state-of-the-art facility provides personalized treatments designed to boost energy, enhance recovery, and support overall wellness. With services including Cryotherapy, Red Light Therapy, Infrared Sauna, IV Drips, and more, we help you look and feel better than you thought possible.",
     featured: true,
-    image: "https://cdn.prod.website-files.com/64156026a787d0f2bb0393c4/66df9ec31f5d13f0f0f0c0b4_Restore%20Hyper%20Wellness%20-%20Who%20We%20Are.jpg",
+    image: "/restore-hero.jpg",
     galleryImages: [
-      "https://cdn.prod.website-files.com/64156026a787d0f2bb0393c4/645e2ecd10de3ffb43b0b8f7_Restore_Cryo_2023.jpg",
-      "https://cdn.prod.website-files.com/64156026a787d0f2bb0393c4/645e34de89d40e0fb1f8b1f3_Restore_RedLight_2023.jpg",
-      "https://cdn.prod.website-files.com/64156026a787d0f2bb0393c4/645e3b4fa69ea2b2d4b0e7b7_Restore_InfraredSauna_2023.jpg",
-      "https://cdn.prod.website-files.com/64156026a787d0f2bb0393c4/645e2f4589d40e0fb1f4c5d0_Restore_Compression_2023.jpg",
-      "https://cdn.prod.website-files.com/64156026a787d0f2bb0393c4/645e30da89d40e0fb1f52b3a_Restore_IVDrip_2023.jpg",
-      "https://cdn.prod.website-files.com/64156026a787d0f2bb0393c4/645e3206a69ea2b2d4acd5b1_Restore_Hydrafacial_2023.jpg"
+      "/restore-gallery-1.jpg",
+      "/restore-gallery-2.jpg",
+      "/restore-gallery-3.jpg",
+      "/restore-gallery-4.jpg",
+      "/restore-gallery-5.jpg",
+      "/restore-gallery-6.jpg"
     ],
     amenities: ["Free parking", "Luxury recliners", "Healthy snacks", "Steam showers"],
     certifications: ["Board certified medical staff", "IV therapy specialists", "Wellness coaches"],
