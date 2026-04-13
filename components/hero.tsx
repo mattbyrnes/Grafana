@@ -22,7 +22,7 @@ export function Hero({ searchQuery, onSearchChange }: HeroProps) {
             Find IV Therapy Clinics Near You
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground text-pretty">
-            Discover Georgia's premier wellness clinics offering IV hydration, vitamin infusions, 
+            Discover Atlanta's premier wellness clinics offering IV hydration, vitamin infusions, 
             NAD+ therapy, and more. Your path to optimal health starts here.
           </p>
 
