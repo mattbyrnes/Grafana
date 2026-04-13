@@ -23,6 +23,13 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
 import { clinics } from "@/lib/clinics-data";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -145,6 +152,31 @@ export default async function ClinicPage({ params }: Props) {
                   {clinic.longDescription}
                 </p>
               </section>
+
+              {/* Gallery Slideshow */}
+              {clinic.galleryImages && clinic.galleryImages.length > 0 && (
+                <section>
+                  <h2 className="font-serif text-2xl font-semibold text-foreground mb-4">Photo Gallery</h2>
+                  <Carousel className="w-full" opts={{ loop: true }}>
+                    <CarouselContent>
+                      {clinic.galleryImages.map((image, index) => (
+                        <CarouselItem key={index}>
+                          <div className="relative aspect-video overflow-hidden rounded-lg">
+                            <Image
+                              src={image}
+                              alt={`${clinic.name} facility photo ${index + 1}`}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="left-4" />
+                    <CarouselNext className="right-4" />
+                  </Carousel>
+                </section>
+              )}
 
               <hr className="border-border" />
 
