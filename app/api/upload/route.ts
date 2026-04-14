@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
     const filename = `clinics/${timestamp}-${Math.random().toString(36).substring(7)}.${extension}`;
 
     const blob = await put(filename, file, {
-      access: "public",
+      access: "private",
     });
 
     return NextResponse.json({ url: blob.url });
