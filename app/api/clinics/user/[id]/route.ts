@@ -63,7 +63,7 @@ export async function PUT(
         description || "",
         priceRange || "",
         hours || "",
-        services || [],
+        JSON.stringify(services || []),
         image || "",
         clinicId,
       ]
