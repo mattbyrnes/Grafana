@@ -28,6 +28,9 @@ export async function POST(request: Request) {
     // Ensure userId is a number
     const numericUserId = typeof userId === 'string' ? parseInt(userId, 10) : userId;
 
+    // Serialize services array to JSON string for JSONB column
+    const servicesJson = JSON.stringify(services || []);
+
     const result = await query(
       `INSERT INTO user_clinics 
        (user_id, name, city, region, address, phone, website, description, price_range, hours, services, image, status)
@@ -44,7 +47,7 @@ export async function POST(request: Request) {
         description || "",
         priceRange || "$",
         hours || "9AM - 5PM",
-        services || [],
+        servicesJson,
         image || "",
         "approved",
       ]
