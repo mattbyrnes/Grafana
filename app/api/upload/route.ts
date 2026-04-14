@@ -34,10 +34,12 @@ export async function POST(request: NextRequest) {
     const filename = `clinics/${timestamp}-${Math.random().toString(36).substring(7)}.${extension}`;
 
     const blob = await put(filename, file, {
-      access: "public",
+      access: "private",
     });
 
-    return NextResponse.json({ url: blob.url });
+    // For private blobs, return the pathname instead of the URL
+    // The pathname is used with the /api/file route to serve the image
+    return NextResponse.json({ url: `/api/file?pathname=${encodeURIComponent(blob.pathname)}` });
   } catch (error) {
     console.error("Upload error:", error);
     return NextResponse.json({ error: "Upload failed" }, { status: 500 });
