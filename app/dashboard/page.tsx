@@ -15,6 +15,7 @@ import {
   Eye,
   ShoppingBag,
   Pencil,
+  CreditCard,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -166,6 +167,32 @@ export default function DashboardPage() {
               >
                 <ShoppingBag className="h-4 w-4" />
                 Visit Shop
+              </a>
+            </Button>
+          </CardContent>
+        </Card>
+
+        <Card className="mb-6 border-primary/20 bg-primary/5">
+          <CardContent className="flex flex-col gap-3 py-5 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary">
+                <CreditCard className="h-5 w-5 text-primary-foreground" />
+              </div>
+              <div>
+                <p className="font-semibold text-foreground">Bridge Credit Card</p>
+                <p className="text-sm text-muted-foreground">
+                  Apply for the Bridge credit card and enjoy exclusive benefits.
+                </p>
+              </div>
+            </div>
+            <Button asChild className="shrink-0 gap-2">
+              <a
+                href="https://bridgeiv.shop/nitra"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <CreditCard className="h-4 w-4" />
+                Learn More
               </a>
             </Button>
           </CardContent>
