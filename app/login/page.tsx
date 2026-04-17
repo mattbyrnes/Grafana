@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Droplet, Mail, Lock, User, ArrowRight, Loader2 } from "lucide-react";
+import { Mail, Lock, User, ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -63,16 +63,19 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <header className="border-b border-border bg-card">
+      <header className="border-b border-border bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-                <Droplet className="h-5 w-5 text-primary-foreground" />
+            <Link href="/" className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
+                <span className="font-serif text-lg font-bold text-primary-foreground">B</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-serif text-lg font-semibold leading-tight text-foreground">
-                  Bridge IV Therapy Directory
+                <span className="font-serif text-xl font-semibold tracking-tight text-foreground">
+                  Bridge
+                </span>
+                <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                  IV Therapy Guide
                 </span>
               </div>
             </Link>
@@ -81,14 +84,17 @@ export default function LoginPage() {
       </header>
 
       <main className="flex-1 flex items-center justify-center px-4 py-12">
-        <Card className="w-full max-w-md">
-          <CardHeader className="text-center">
-            <CardTitle className="font-serif text-2xl">
-              {isLogin ? "Welcome Back" : "Create Account"}
+        <Card className="w-full max-w-md border border-border">
+          <CardHeader className="text-center pb-2">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary mb-4">
+              {isLogin ? "Welcome Back" : "Join Bridge"}
+            </p>
+            <CardTitle className="font-serif text-2xl font-medium">
+              {isLogin ? "Sign in to your account" : "Create your account"}
             </CardTitle>
-            <CardDescription>
+            <CardDescription className="mt-2">
               {isLogin
-                ? "Sign in to manage your clinic listings"
+                ? "Access your clinic dashboard and manage listings"
                 : "Register to list your clinic in our directory"}
             </CardDescription>
           </CardHeader>
@@ -106,7 +112,7 @@ export default function LoginPage() {
                         placeholder="Dr. Jane Smith"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="pl-10"
+                        className="pl-10 h-11 rounded-sm border-border"
                         required={!isLogin}
                       />
                     </div>
@@ -123,7 +129,7 @@ export default function LoginPage() {
                       placeholder="you@example.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="pl-10"
+                      className="pl-10 h-11 rounded-sm border-border"
                       required
                     />
                   </div>
@@ -139,7 +145,7 @@ export default function LoginPage() {
                       placeholder="Enter your password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="pl-10"
+                      className="pl-10 h-11 rounded-sm border-border"
                       required
                       minLength={6}
                     />
@@ -151,7 +157,7 @@ export default function LoginPage() {
                 )}
               </FieldGroup>
 
-              <Button type="submit" className="w-full gap-2" disabled={isLoading}>
+              <Button type="submit" className="w-full h-11 gap-2 rounded-sm" disabled={isLoading}>
                 {isLoading ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
                 ) : (
@@ -163,7 +169,7 @@ export default function LoginPage() {
               </Button>
             </form>
 
-            <div className="mt-6 text-center">
+            <div className="mt-8 text-center border-t border-border pt-6">
               <button
                 type="button"
                 onClick={() => {

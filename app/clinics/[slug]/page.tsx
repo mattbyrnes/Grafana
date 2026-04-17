@@ -84,7 +84,7 @@ export default async function ClinicPage({ params }: Props) {
             <div className="mx-auto w-full max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
               <Link
                 href="/"
-                className="mb-4 inline-flex items-center gap-1.5 text-sm text-primary-foreground/80 transition-colors hover:text-primary-foreground"
+                className="mb-4 inline-flex items-center gap-1.5 text-sm text-white/80 transition-colors hover:text-white"
               >
                 <ChevronLeft className="h-4 w-4" />
                 Back to Directory
@@ -92,28 +92,27 @@ export default async function ClinicPage({ params }: Props) {
               <div className="flex flex-wrap items-end justify-between gap-4">
                 <div>
                   {clinic.featured && (
-                    <Badge className="mb-2 bg-primary text-primary-foreground gap-1">
-                      <Award className="h-3 w-3" />
-                      Featured Clinic
+                    <Badge className="mb-3 bg-primary text-primary-foreground text-[10px] uppercase tracking-wider font-semibold rounded-sm px-2 py-1">
+                      Featured
                     </Badge>
                   )}
-                  <h1 className="font-serif text-3xl font-bold text-white sm:text-4xl text-balance">
+                  <h1 className="font-serif text-3xl font-medium text-white sm:text-4xl text-balance">
                     {clinic.name}
                   </h1>
-                  <div className="mt-2 flex flex-wrap items-center gap-3 text-white/90">
+                  <div className="mt-3 flex flex-wrap items-center gap-4 text-white/90">
                     <div className="flex items-center gap-1.5">
                       <MapPin className="h-4 w-4" />
-                      <span className="text-sm">{clinic.city}, GA — {clinic.region}</span>
+                      <span className="text-sm uppercase tracking-wider">{clinic.city}, GA</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-                      <span className="text-sm font-semibold">{clinic.rating}</span>
+                      <Star className="h-4 w-4 fill-accent text-accent" />
+                      <span className="text-sm font-medium">{clinic.rating}</span>
                       <span className="text-sm text-white/70">({clinic.reviewCount} reviews)</span>
                     </div>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <Button className="gap-2" asChild>
+                  <Button className="gap-2 rounded-sm" asChild>
                     <a href={`https://${clinic.website}`} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="h-4 w-4" />
                       Visit Website
@@ -134,7 +133,8 @@ export default async function ClinicPage({ params }: Props) {
 
               {/* About */}
               <section>
-                <h2 className="font-serif text-2xl font-semibold text-foreground">About {clinic.name}</h2>
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">About</p>
+                <h2 className="mt-2 font-serif text-2xl font-medium text-foreground">{clinic.name}</h2>
                 <p className="mt-4 text-base leading-relaxed text-muted-foreground">
                   {clinic.longDescription}
                 </p>
@@ -144,7 +144,8 @@ export default async function ClinicPage({ params }: Props) {
 
               {/* Services Menu */}
               <section>
-                <h2 className="font-serif text-2xl font-semibold text-foreground">Services &amp; Pricing</h2>
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">Treatments</p>
+                <h2 className="mt-2 font-serif text-2xl font-medium text-foreground">Services &amp; Pricing</h2>
                 <div className="mt-4 grid gap-4 sm:grid-cols-2">
                   {clinic.serviceDetails.map((service) => (
                     <Card key={service.name} className="border-border">
@@ -171,12 +172,16 @@ export default async function ClinicPage({ params }: Props) {
               {/* Reviews */}
               <section>
                 <div className="flex items-center justify-between">
-                  <h2 className="font-serif text-2xl font-semibold text-foreground">Patient Reviews</h2>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">Reviews</p>
+                    <h2 className="mt-2 font-serif text-2xl font-medium text-foreground">Patient Feedback</h2>
+                  </div>
                   <div className="flex items-center gap-2">
-                    <Star className="h-5 w-5 fill-amber-400 text-amber-400" />
-                    <span className="text-lg font-bold text-foreground">{clinic.rating}</span>
+                    <Star className="h-5 w-5 fill-accent text-accent" />
+                    <span className="text-lg font-semibold text-foreground">{clinic.rating}</span>
                     <span className="text-sm text-muted-foreground">/ 5.0</span>
                   </div>
+                </div>
                 </div>
                 <div className="mt-4 space-y-4">
                   {clinic.reviews.map((review, i) => (
@@ -202,7 +207,7 @@ export default async function ClinicPage({ params }: Props) {
                                       key={idx}
                                       className={`h-3.5 w-3.5 ${
                                         idx < review.rating
-                                          ? "fill-amber-400 text-amber-400"
+                                          ? "fill-accent text-accent"
                                           : "fill-muted text-muted"
                                       }`}
                                     />
@@ -268,7 +273,7 @@ export default async function ClinicPage({ params }: Props) {
                   </div>
                   <hr className="border-border" />
                   <div className="flex flex-col gap-2">
-                    <Button className="w-full gap-2" asChild>
+                    <Button className="w-full gap-2 rounded-sm" asChild>
                       <a href={`https://${clinic.website}`} target="_blank" rel="noopener noreferrer">
                         <Calendar className="h-4 w-4" />
                         Book Appointment

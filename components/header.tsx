@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, Droplet, User, LogOut } from "lucide-react";
+import { Menu, X, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/lib/auth-context";
 
@@ -16,61 +16,63 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
+    <header className="sticky top-0 z-50 border-b border-border bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-              <Droplet className="h-5 w-5 text-primary-foreground" />
+          <Link href="/" className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
+              <span className="font-serif text-lg font-bold text-primary-foreground">B</span>
             </div>
             <div className="flex flex-col">
-              <span className="font-serif text-lg font-semibold leading-tight text-foreground">
-                Bridge IV Therapy Directory
+              <span className="font-serif text-xl font-semibold tracking-tight text-foreground">
+                Bridge
+              </span>
+              <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                IV Therapy Guide
               </span>
             </div>
           </Link>
 
-          <nav className="hidden items-center gap-6 md:flex">
+          <nav className="hidden items-center gap-8 md:flex">
             <Link
               href="#clinics"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm font-medium text-foreground transition-colors hover:text-primary"
             >
-              Browse Clinics
+              Clinics
             </Link>
             <Link
               href="#services"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm font-medium text-foreground transition-colors hover:text-primary"
             >
               Services
             </Link>
             <Link
               href="#about"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm font-medium text-foreground transition-colors hover:text-primary"
             >
-              About IV Therapy
+              About
             </Link>
             
             {!isLoading && (
               <>
                 {user ? (
-                  <div className="flex items-center gap-3">
-                    <Button variant="outline" size="sm" asChild>
+                  <div className="flex items-center gap-3 border-l border-border pl-6">
+                    <Button variant="ghost" size="sm" asChild className="text-foreground hover:text-primary hover:bg-transparent">
                       <Link href="/dashboard" className="gap-2">
                         <User className="h-4 w-4" />
                         Dashboard
                       </Link>
                     </Button>
-                    <Button variant="ghost" size="sm" onClick={handleLogout} className="gap-2">
+                    <Button variant="ghost" size="sm" onClick={handleLogout} className="text-muted-foreground hover:text-primary hover:bg-transparent gap-2">
                       <LogOut className="h-4 w-4" />
-                      Sign Out
                     </Button>
                   </div>
                 ) : (
-                  <div className="flex items-center gap-3">
-                    <Button variant="ghost" size="sm" asChild>
+                  <div className="flex items-center gap-4 border-l border-border pl-6">
+                    <Button variant="ghost" size="sm" asChild className="text-foreground hover:text-primary hover:bg-transparent">
                       <Link href="/login">Sign In</Link>
                     </Button>
-                    <Button size="sm" asChild>
+                    <Button size="sm" asChild className="rounded-sm bg-primary hover:bg-primary/90">
                       <Link href="/login">List Your Clinic</Link>
                     </Button>
                   </div>
@@ -94,37 +96,37 @@ export function Header() {
       </div>
 
       {isMenuOpen && (
-        <div className="border-t border-border bg-card md:hidden">
-          <nav className="flex flex-col gap-2 p-4">
+        <div className="border-t border-border bg-background md:hidden">
+          <nav className="flex flex-col gap-1 p-4">
             <Link
               href="#clinics"
-              className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+              className="px-3 py-3 text-sm font-medium text-foreground hover:text-primary"
               onClick={() => setIsMenuOpen(false)}
             >
-              Browse Clinics
+              Clinics
             </Link>
             <Link
               href="#services"
-              className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+              className="px-3 py-3 text-sm font-medium text-foreground hover:text-primary"
               onClick={() => setIsMenuOpen(false)}
             >
               Services
             </Link>
             <Link
               href="#about"
-              className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+              className="px-3 py-3 text-sm font-medium text-foreground hover:text-primary"
               onClick={() => setIsMenuOpen(false)}
             >
-              About IV Therapy
+              About
             </Link>
             
             {!isLoading && (
-              <div className="mt-2 border-t border-border pt-4">
+              <div className="mt-3 border-t border-border pt-4">
                 {user ? (
                   <>
                     <Link
                       href="/dashboard"
-                      className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                      className="flex items-center gap-2 px-3 py-3 text-sm font-medium text-foreground hover:text-primary"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       <User className="h-4 w-4" />
@@ -132,7 +134,7 @@ export function Header() {
                     </Link>
                     <button
                       onClick={handleLogout}
-                      className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                      className="flex w-full items-center gap-2 px-3 py-3 text-sm font-medium text-muted-foreground hover:text-primary"
                     >
                       <LogOut className="h-4 w-4" />
                       Sign Out
@@ -142,12 +144,12 @@ export function Header() {
                   <>
                     <Link
                       href="/login"
-                      className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground block"
+                      className="block px-3 py-3 text-sm font-medium text-foreground hover:text-primary"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Sign In
                     </Link>
-                    <Button size="sm" className="mt-2 w-full" asChild>
+                    <Button size="sm" className="mt-3 w-full rounded-sm" asChild>
                       <Link href="/login" onClick={() => setIsMenuOpen(false)}>
                         List Your Clinic
                       </Link>

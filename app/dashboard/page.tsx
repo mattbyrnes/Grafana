@@ -91,16 +91,19 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b border-border bg-card">
+      <header className="border-b border-border bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-                <Droplet className="h-5 w-5 text-primary-foreground" />
+            <Link href="/" className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
+                <span className="font-serif text-lg font-bold text-primary-foreground">B</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-serif text-lg font-semibold leading-tight text-foreground">
-                  Bridge IV Therapy Directory
+                <span className="font-serif text-xl font-semibold tracking-tight text-foreground">
+                  Bridge
+                </span>
+                <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                  IV Therapy Guide
                 </span>
               </div>
             </Link>
@@ -128,17 +131,18 @@ export default function DashboardPage() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="font-serif text-3xl font-bold text-foreground">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">Dashboard</p>
+            <h1 className="mt-2 font-serif text-3xl font-medium text-foreground">
               Welcome, {user.name}
             </h1>
-            <p className="mt-1 text-muted-foreground">
-              Manage your clinic listings from your dashboard
+            <p className="mt-2 text-muted-foreground">
+              Manage your clinic listings
             </p>
           </div>
-          <Button asChild className="gap-2">
+          <Button asChild className="gap-2 rounded-sm">
             <Link href="/submit-clinic">
               <Plus className="h-4 w-4" />
               Add New Clinic
@@ -146,20 +150,20 @@ export default function DashboardPage() {
           </Button>
         </div>
 
-        <Card className="mb-6 border-primary/20 bg-primary/5">
-          <CardContent className="flex flex-col gap-3 py-5 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary">
-                <ShoppingBag className="h-5 w-5 text-primary-foreground" />
+        <Card className="mb-6 border-border">
+          <CardContent className="flex flex-col gap-4 py-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-border bg-background">
+                <ShoppingBag className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <p className="font-semibold text-foreground">Bridge Global Health Shop</p>
+                <p className="font-serif font-medium text-foreground">Bridge Global Health Shop</p>
                 <p className="text-sm text-muted-foreground">
                   Browse IV therapy supplies, wellness products, and more.
                 </p>
               </div>
             </div>
-            <Button asChild className="shrink-0 gap-2">
+            <Button asChild className="shrink-0 gap-2 rounded-sm">
               <a
                 href="https://shop.bridgeglobalhealth.com/"
                 target="_blank"
@@ -172,20 +176,20 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="mb-6 border-primary/20 bg-primary/5">
-          <CardContent className="flex flex-col gap-3 py-5 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary">
-                <CreditCard className="h-5 w-5 text-primary-foreground" />
+        <Card className="mb-8 border-border">
+          <CardContent className="flex flex-col gap-4 py-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-border bg-background">
+                <CreditCard className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <p className="font-semibold text-foreground">Bridge Credit Card</p>
+                <p className="font-serif font-medium text-foreground">Bridge Credit Card</p>
                 <p className="text-sm text-muted-foreground">
                   Apply for the Bridge credit card and enjoy exclusive benefits.
                 </p>
               </div>
             </div>
-            <Button asChild className="shrink-0 gap-2">
+            <Button asChild className="shrink-0 gap-2 rounded-sm">
               <a
                 href="https://bridgeiv.shop/nitra"
                 target="_blank"
@@ -200,12 +204,11 @@ export default function DashboardPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Building2 className="h-5 w-5" />
+            <CardTitle className="font-serif font-medium flex items-center gap-2">
               Your Clinics
             </CardTitle>
             <CardDescription>
-              View and manage your submitted clinic listings
+              View and manage your submitted listings
             </CardDescription>
           </CardHeader>
           <CardContent>

@@ -130,8 +130,17 @@ export function ClinicDirectory() {
     <>
       <Hero searchQuery={searchQuery} onSearchChange={setSearchQuery} />
 
-      <section id="clinics" className="py-12 sm:py-16">
+      <section id="clinics" className="py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <h2 className="font-serif text-2xl font-medium text-foreground sm:text-3xl">
+              Featured Clinics
+            </h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Discover IV therapy clinics selected by our team
+            </p>
+          </div>
+          
           <ClinicFilters
             selectedRegion={selectedRegion}
             selectedService={selectedService}
@@ -144,25 +153,25 @@ export function ClinicDirectory() {
           />
 
           {filteredAndSortedClinics.length > 0 ? (
-            <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {filteredAndSortedClinics.map((clinic) => (
                 <ClinicCard key={`${clinic.slug}-${clinic.id}`} clinic={clinic} />
               ))}
             </div>
           ) : (
-            <div className="mt-12">
-              <Empty className="border border-border">
+            <div className="mt-16">
+              <Empty className="border border-border bg-background">
                 <EmptyHeader>
                   <EmptyMedia variant="icon">
                     <SearchX className="size-5" />
                   </EmptyMedia>
-                  <EmptyTitle>No clinics found</EmptyTitle>
+                  <EmptyTitle className="font-serif">No clinics found</EmptyTitle>
                   <EmptyDescription>
                     Try adjusting your search or filters to find more clinics.
                   </EmptyDescription>
                 </EmptyHeader>
                 <EmptyContent>
-                  <Button onClick={clearFilters} variant="outline">
+                  <Button onClick={clearFilters} variant="outline" className="rounded-sm">
                     Clear Filters
                   </Button>
                 </EmptyContent>

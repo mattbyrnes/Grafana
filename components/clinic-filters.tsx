@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, SlidersHorizontal, X } from "lucide-react";
+import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -36,21 +36,28 @@ export function ClinicFilters({
     selectedRegion !== "All Regions" || selectedService !== "All Services";
 
   return (
-    <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex items-center gap-2">
-          <SlidersHorizontal className="h-5 w-5 text-muted-foreground" />
-          <span className="font-medium text-foreground">Filter Clinics</span>
-          <span className="text-sm text-muted-foreground">
-            ({resultCount} {resultCount === 1 ? "result" : "results"})
+    <div className="border-b border-border pb-6">
+      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex items-center gap-4">
+          <span className="text-sm font-medium text-foreground">
+            {resultCount} {resultCount === 1 ? "clinic" : "clinics"}
           </span>
+          {hasActiveFilters && (
+            <button
+              onClick={onClearFilters}
+              className="flex items-center gap-1 text-xs text-primary hover:underline"
+            >
+              <X className="h-3 w-3" />
+              Clear filters
+            </button>
+          )}
         </div>
 
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <div className="flex flex-wrap gap-3">
             <Select value={selectedRegion} onValueChange={onRegionChange}>
-              <SelectTrigger className="w-full sm:w-[180px]">
-                <SelectValue placeholder="Select region" />
+              <SelectTrigger className="h-10 w-full border-border bg-background text-sm sm:w-[160px]">
+                <SelectValue placeholder="Region" />
               </SelectTrigger>
               <SelectContent>
                 {regions.map((region) => (
@@ -62,8 +69,8 @@ export function ClinicFilters({
             </Select>
 
             <Select value={selectedService} onValueChange={onServiceChange}>
-              <SelectTrigger className="w-full sm:w-[180px]">
-                <SelectValue placeholder="Select service" />
+              <SelectTrigger className="h-10 w-full border-border bg-background text-sm sm:w-[160px]">
+                <SelectValue placeholder="Service" />
               </SelectTrigger>
               <SelectContent>
                 {services.map((service) => (
@@ -75,29 +82,17 @@ export function ClinicFilters({
             </Select>
 
             <Select value={sortBy} onValueChange={onSortChange}>
-              <SelectTrigger className="w-full sm:w-[160px]">
+              <SelectTrigger className="h-10 w-full border-border bg-background text-sm sm:w-[150px]">
                 <SelectValue placeholder="Sort by" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="featured">Featured First</SelectItem>
+                <SelectItem value="featured">Featured</SelectItem>
                 <SelectItem value="rating">Highest Rated</SelectItem>
                 <SelectItem value="reviews">Most Reviews</SelectItem>
                 <SelectItem value="name">Name (A-Z)</SelectItem>
               </SelectContent>
             </Select>
           </div>
-
-          {hasActiveFilters && (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={onClearFilters}
-              className="gap-1 text-muted-foreground hover:text-foreground"
-            >
-              <X className="h-4 w-4" />
-              Clear Filters
-            </Button>
-          )}
         </div>
       </div>
     </div>

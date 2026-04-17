@@ -146,16 +146,19 @@ export default function SubmitClinicPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b border-border bg-card">
+      <header className="border-b border-border bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-                <Droplet className="h-5 w-5 text-primary-foreground" />
+            <Link href="/" className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
+                <span className="font-serif text-lg font-bold text-primary-foreground">B</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-serif text-lg font-semibold leading-tight text-foreground">
-                  Bridge IV Therapy Directory
+                <span className="font-serif text-xl font-semibold tracking-tight text-foreground">
+                  Bridge
+                </span>
+                <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                  IV Therapy Guide
                 </span>
               </div>
             </Link>
@@ -163,23 +166,22 @@ export default function SubmitClinicPage() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:px-8">
-        <Button variant="ghost" asChild className="mb-6 gap-2">
+      <main className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+        <Button variant="ghost" asChild className="mb-8 gap-2 -ml-4 text-muted-foreground hover:text-foreground hover:bg-transparent">
           <Link href="/dashboard">
             <ArrowLeft className="h-4 w-4" />
             Back to Dashboard
           </Link>
         </Button>
 
-        <Card>
+        <Card className="border-border">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 font-serif text-2xl">
-              <Building2 className="h-6 w-6" />
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">Add Listing</p>
+            <CardTitle className="mt-2 font-serif text-2xl font-medium">
               Submit Your Clinic
             </CardTitle>
             <CardDescription>
               Fill out the form below to list your IV therapy clinic in our directory.
-              Your listing will appear immediately after submission.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -335,10 +337,10 @@ export default function SubmitClinicPage() {
                         key={service}
                         type="button"
                         onClick={() => handleServiceToggle(service)}
-                        className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
+                        className={`rounded-sm border px-3 py-1.5 text-sm font-medium transition-colors ${
                           formData.services.includes(service)
-                            ? "bg-primary text-primary-foreground"
-                            : "bg-muted text-muted-foreground hover:bg-muted/80"
+                            ? "border-primary bg-primary text-primary-foreground"
+                            : "border-border bg-background text-muted-foreground hover:border-primary hover:text-foreground"
                         }`}
                       >
                         {service}
@@ -387,11 +389,11 @@ export default function SubmitClinicPage() {
                 </Field>
               </FieldGroup>
 
-              <div className="flex flex-col gap-3 pt-4 sm:flex-row sm:justify-end">
-                <Button type="button" variant="outline" asChild>
+              <div className="flex flex-col gap-3 pt-6 sm:flex-row sm:justify-end">
+                <Button type="button" variant="outline" asChild className="rounded-sm">
                   <Link href="/dashboard">Cancel</Link>
                 </Button>
-                <Button type="submit" disabled={isSubmitting} className="gap-2">
+                <Button type="submit" disabled={isSubmitting} className="gap-2 rounded-sm">
                   {isSubmitting ? (
                     <>
                       <Loader2 className="h-4 w-4 animate-spin" />

@@ -48,30 +48,30 @@ const servicesList = [
 
 export function ServicesSection() {
   return (
-    <section id="services" className="bg-card py-16 sm:py-24">
+    <section id="services" className="border-t border-border bg-background py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-medium uppercase tracking-wider text-primary">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">
             Treatment Options
           </p>
-          <h2 className="mt-3 font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="mt-4 font-serif text-3xl font-medium tracking-tight text-foreground sm:text-4xl">
             Popular IV Therapy Services
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
             Explore the range of IV therapy treatments available at clinics across Georgia.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {servicesList.map((service) => (
             <div
               key={service.title}
-              className="group rounded-xl border border-border bg-background p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-md"
+              className="group text-center"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-border bg-background text-primary transition-all duration-300 group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground">
                 <service.icon className="h-6 w-6" />
               </div>
-              <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">
+              <h3 className="mt-5 font-serif text-lg font-medium text-foreground">
                 {service.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
