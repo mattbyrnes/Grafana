@@ -46,6 +46,8 @@ export default function BookAppointmentPage() {
   const router = useRouter();
   const slug = params.slug as string;
   
+  console.log("[v0] BookAppointmentPage loaded, slug:", slug);
+  
   const [clinic, setClinic] = useState<Clinic | null>(null);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [selectedTime, setSelectedTime] = useState<string>("");
