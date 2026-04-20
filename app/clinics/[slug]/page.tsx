@@ -269,10 +269,10 @@ export default async function ClinicPage({ params }: Props) {
                   <hr className="border-border" />
                   <div className="flex flex-col gap-2">
                     <Button className="w-full gap-2" asChild>
-                      <a href={`https://${clinic.website}`} target="_blank" rel="noopener noreferrer">
+                      <Link href={`/clinics/${clinic.slug}/book`}>
                         <Calendar className="h-4 w-4" />
                         Book Appointment
-                      </a>
+                      </Link>
                     </Button>
                   </div>
                 </CardContent>
