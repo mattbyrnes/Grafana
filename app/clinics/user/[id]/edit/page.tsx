@@ -31,7 +31,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useAuth } from "@/lib/auth-context";
-import { regions } from "@/lib/clinics-data";
 
 const serviceOptions = [
   "Hydration Therapy",
@@ -79,7 +78,6 @@ export default function EditClinicPage() {
   const [formData, setFormData] = useState({
     name: "",
     city: "",
-    region: "",
     address: "",
     phone: "",
     website: "",
@@ -122,7 +120,6 @@ export default function EditClinicPage() {
         setFormData({
           name: data.name ?? "",
           city: data.city ?? "",
-          region: data.region ?? "",
           address: data.address ?? "",
           phone: data.phone ?? "",
           website: data.website ?? "",
@@ -341,37 +338,17 @@ export default function EditClinicPage() {
                   />
                 </Field>
 
-                {/* City + Region */}
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <Field>
-                    <FieldLabel htmlFor="city">City</FieldLabel>
-                    <Input
-                      id="city"
-                      placeholder="e.g., Atlanta"
-                      value={formData.city}
-                      onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                      required
-                    />
-                  </Field>
-                  <Field>
-                    <FieldLabel htmlFor="region">Region</FieldLabel>
-                    <Select
-                      value={formData.region}
-                      onValueChange={(value) => setFormData({ ...formData, region: value })}
-                    >
-                      <SelectTrigger id="region">
-                        <SelectValue placeholder="Select a region" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {regions.map((region) => (
-                          <SelectItem key={region} value={region}>
-                            {region}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </Field>
-                </div>
+                {/* City */}
+                <Field>
+                  <FieldLabel htmlFor="city">City</FieldLabel>
+                  <Input
+                    id="city"
+                    placeholder="e.g., Atlanta"
+                    value={formData.city}
+                    onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                    required
+                  />
+                </Field>
 
                 {/* Address */}
                 <Field>
