@@ -8,21 +8,26 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Clinic } from "@/lib/clinics-data";
 
-// Coordinates for clinics in Metro Atlanta area
-// These are approximate coordinates based on addresses
+// Accurate coordinates for clinics based on actual addresses
 const clinicCoordinates: Record<string, [number, number]> = {
-  "drip-hydration-atlanta": [33.7615, -84.3749],
-  "restore-hyper-wellness-westside": [33.8012, -84.4321],
-  "replenish-atlanta": [33.7716, -84.3801],
-  "hydrate-iv-bar": [33.7876, -84.3879],
-  "hydraplus-virginia-highlands": [33.7847, -84.3515],
-  "iv-league-hydration": [33.8407, -84.3658],
-  "revive-atlanta": [33.7490, -84.3880],
-  "vitality-iv-lounge": [33.9207, -84.3428],
-  "pure-hydration-spa": [33.7735, -84.2963],
-  "elite-iv-therapy": [33.8890, -84.4665],
-  "wellness-drip-center": [33.7627, -84.3847],
-  "hydration-station-atl": [33.8034, -84.3963],
+  // 691 John Wesley Dobbs Ave NE Suite C, Atlanta, GA 30312
+  "drip-hydration-atlanta": [33.7578, -84.3722],
+  // 2250 Marietta Blvd NW Suite 208, Atlanta, GA 30318
+  "restore-hyper-wellness-westside": [33.7997, -84.4380],
+  // 525 North Avenue NE Suite 300, Atlanta, GA 30308
+  "replenish-atlanta": [33.7714, -84.3766],
+  // 1270 Spring St NW, Atlanta, GA 30309
+  "hydrate-iv-bar": [33.7872, -84.3876],
+  // 675 N Highland Ave NE Suite 4000, Atlanta, GA 30306
+  "hydraplus-virginia-highlands": [33.7739, -84.3502],
+  // 2221 Peachtree Rd Q, Atlanta, GA 30309
+  "hydraplus-buckhead": [33.8182, -84.3615],
+  // 931 Monroe Dr NE Unit 111A, Atlanta, GA 30308
+  "restore-hyper-wellness-midtown": [33.7787, -84.3645],
+  // 905 Juniper St NE 2nd Floor 109, Atlanta, GA 30309
+  "liquid-life-wellness": [33.7823, -84.3828],
+  // 1080 W Peachtree St NW Unit 5, Atlanta, GA 30309
+  "4ever-young-midtown": [33.7854, -84.3880],
 };
 
 // Default coordinates for clinics without specific mappings (Metro Atlanta center)
