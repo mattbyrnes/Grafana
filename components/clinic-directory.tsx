@@ -18,7 +18,6 @@ import { SearchX } from "lucide-react";
 
 export function ClinicDirectory() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedRegion, setSelectedRegion] = useState("All Regions");
   const [selectedService, setSelectedService] = useState("All Services");
   const [sortBy, setSortBy] = useState("featured");
   const [userSubmittedClinics, setUserSubmittedClinics] = useState<Clinic[]>([]);
@@ -86,11 +85,6 @@ export function ClinicDirectory() {
       );
     }
 
-    // Region filter
-    if (selectedRegion !== "All Regions") {
-      filtered = filtered.filter((clinic) => clinic.region === selectedRegion);
-    }
-
     // Service filter
     if (selectedService !== "All Services") {
       filtered = filtered.filter((clinic) =>
@@ -117,11 +111,10 @@ export function ClinicDirectory() {
     });
 
     return sorted;
-  }, [searchQuery, selectedRegion, selectedService, sortBy, allClinics]);
+  }, [searchQuery, selectedService, sortBy, allClinics]);
 
   const clearFilters = () => {
     setSearchQuery("");
-    setSelectedRegion("All Regions");
     setSelectedService("All Services");
     setSortBy("featured");
   };
@@ -133,10 +126,8 @@ export function ClinicDirectory() {
       <section id="clinics" className="py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ClinicFilters
-            selectedRegion={selectedRegion}
             selectedService={selectedService}
             sortBy={sortBy}
-            onRegionChange={setSelectedRegion}
             onServiceChange={setSelectedService}
             onSortChange={setSortBy}
             onClearFilters={clearFilters}

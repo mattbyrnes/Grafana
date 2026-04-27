@@ -9,13 +9,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { regions, services } from "@/lib/clinics-data";
+import { services } from "@/lib/clinics-data";
 
 interface ClinicFiltersProps {
-  selectedRegion: string;
   selectedService: string;
   sortBy: string;
-  onRegionChange: (value: string) => void;
   onServiceChange: (value: string) => void;
   onSortChange: (value: string) => void;
   onClearFilters: () => void;
@@ -23,17 +21,14 @@ interface ClinicFiltersProps {
 }
 
 export function ClinicFilters({
-  selectedRegion,
   selectedService,
   sortBy,
-  onRegionChange,
   onServiceChange,
   onSortChange,
   onClearFilters,
   resultCount,
 }: ClinicFiltersProps) {
-  const hasActiveFilters =
-    selectedRegion !== "All Regions" || selectedService !== "All Services";
+  const hasActiveFilters = selectedService !== "All Services";
 
   return (
     <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
@@ -48,19 +43,6 @@ export function ClinicFilters({
 
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <div className="flex flex-wrap gap-3">
-            <Select value={selectedRegion} onValueChange={onRegionChange}>
-              <SelectTrigger className="w-full sm:w-[180px]">
-                <SelectValue placeholder="Select region" />
-              </SelectTrigger>
-              <SelectContent>
-                {regions.map((region) => (
-                  <SelectItem key={region} value={region}>
-                    {region}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-
             <Select value={selectedService} onValueChange={onServiceChange}>
               <SelectTrigger className="w-full sm:w-[180px]">
                 <SelectValue placeholder="Select service" />
