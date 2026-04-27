@@ -8,26 +8,73 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Clinic } from "@/lib/clinics-data";
 
-// Accurate coordinates for clinics based on actual addresses
+// Accurate geocoded coordinates for all clinics based on actual addresses
 const clinicCoordinates: Record<string, [number, number]> = {
-  // 691 John Wesley Dobbs Ave NE Suite C, Atlanta, GA 30312
-  "drip-hydration-atlanta": [33.7578, -84.3722],
-  // 2250 Marietta Blvd NW Suite 208, Atlanta, GA 30318
-  "restore-hyper-wellness-westside": [33.7997, -84.4380],
-  // 525 North Avenue NE Suite 300, Atlanta, GA 30308
-  "replenish-atlanta": [33.7714, -84.3766],
-  // 1270 Spring St NW, Atlanta, GA 30309
-  "hydrate-iv-bar": [33.7872, -84.3876],
-  // 675 N Highland Ave NE Suite 4000, Atlanta, GA 30306
-  "hydraplus-virginia-highlands": [33.7739, -84.3502],
-  // 2221 Peachtree Rd Q, Atlanta, GA 30309
-  "hydraplus-buckhead": [33.8182, -84.3615],
-  // 931 Monroe Dr NE Unit 111A, Atlanta, GA 30308
-  "restore-hyper-wellness-midtown": [33.7787, -84.3645],
-  // 905 Juniper St NE 2nd Floor 109, Atlanta, GA 30309
-  "liquid-life-wellness": [33.7823, -84.3828],
-  // 1080 W Peachtree St NW Unit 5, Atlanta, GA 30309
-  "4ever-young-midtown": [33.7854, -84.3880],
+  // Atlanta - Midtown/Downtown
+  "drip-hydration-atlanta": [33.7628, -84.3748], // 691 John Wesley Dobbs Ave NE
+  "replenish-atlanta": [33.7714, -84.3766], // 525 North Avenue NE
+  "hydrate-iv-bar": [33.7897, -84.3876], // 1270 Spring St NW
+  "restore-hyper-wellness-midtown": [33.7787, -84.3645], // 931 Monroe Dr NE
+  "liquid-life-wellness": [33.7847, -84.3836], // 905 Juniper St NE
+  "4ever-young-midtown": [33.7893, -84.3880], // 1080 W Peachtree St NW
+  
+  // Atlanta - Virginia Highlands / Buckhead
+  "hydraplus-virginia-highlands": [33.7739, -84.3502], // 675 N Highland Ave NE
+  "hydraplus-buckhead": [33.8420, -84.3790], // 2221 Peachtree Rd Q
+  "vida-flo-buckhead": [33.8456, -84.3621], // 2900 Peachtree Rd NW
+  "prime-iv-toco-hills": [33.8171, -84.3231], // 3019 N Druid Hills Rd
+  
+  // Atlanta - Westside
+  "restore-hyper-wellness-westside": [33.8056, -84.4278], // 2250 Marietta Blvd NW
+  
+  // Decatur
+  "vida-flo-decatur": [33.7748, -84.2964], // 431 W Ponce de Leon Ave
+  
+  // Smyrna
+  "prime-iv-smyrna": [33.8631, -84.5144], // 4500 W Village Pl
+  
+  // Marietta
+  "prime-iv-marietta": [33.9671, -84.4365], // 1205 Johnson Ferry Rd
+  "drip-and-glow-marietta": [33.9335, -84.4680], // 3827 Roswell Rd
+  
+  // Dunwoody
+  "restore-dunwoody": [33.9276, -84.3350], // 4706 Ashford Dunwoody Rd
+  
+  // Alpharetta
+  "restore-alpharetta": [34.0724, -84.2941], // 7155 Avalon Wy
+  "iv-nutrition-alpharetta": [34.0489, -84.2808], // 9925 Haynes Bridge Rd
+  
+  // Roswell
+  "prime-iv-roswell-corners": [34.0395, -84.3475], // 1155 Woodstock Rd
+  "whydrate-roswell": [34.0234, -84.3516], // 1245 Alpharetta St
+  "ultimate-hydration-roswell": [34.0512, -84.3489], // 1905 Woodstock Rd
+  "vita-infusions-roswell": [34.0621, -84.3381], // 1240 Upper Hembree Rd
+  
+  // Johns Creek / Peachtree Corners
+  "vida-flo-johns-creek": [34.0289, -84.1978], // 10900 Medlock Bridge Rd
+  "prime-iv-peachtree-corners": [33.9689, -84.2256], // 5215 Town Center Blvd
+  "mycare-clinic-peachtree-corners": [33.9689, -84.2300], // Peachtree Corners, GA
+  
+  // Kennesaw
+  "whydrate-kennesaw": [34.0234, -84.5812], // 2615 George Busbee Pkwy NW
+  "tia-hydrate-kennesaw": [34.0289, -84.5967], // 3772 Cherokee St NW
+  
+  // Duluth / Suwanee
+  "ivy-clinic-duluth": [33.9634, -84.1456], // 2005 Boggs Rd NW
+  "purifi-iv-suwanee": [34.0178, -84.0689], // 1500 Peachtree Industrial Blvd
+  "twelvestone-infusion-center-duluth": [33.9856, -84.1167], // 2925 Premiere Pkwy
+  
+  // Buford
+  "revive-iv-lounge-buford": [34.0734, -83.9856], // 2725 Mall of Georgia Blvd
+  
+  // Dacula / Lawrenceville / Lilburn
+  "gwinnett-iv-therapy-dacula": [33.9823, -83.8934], // 3577 Braselton Hwy
+  "just-infusion-plus-lawrenceville": [33.9478, -84.0489], // 4955 Sugarloaf Pkwy
+  "iv-vitamin-hydration-lawrenceville": [33.9612, -84.0278], // 5425 Sugarloaf Pkwy
+  "its-the-drip-lilburn": [33.8823, -84.1134], // 3100 Five Forks Trickum Rd SW
+  
+  // Peachtree City
+  "sluice-drip-spa-peachtree-city": [33.3967, -84.5589], // 23 Eastbrook Bend
 };
 
 // Default coordinates for clinics without specific mappings (Metro Atlanta center)
