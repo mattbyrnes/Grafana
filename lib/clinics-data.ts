@@ -1618,10 +1618,6 @@ export const clinics: Clinic[] = [
 export const regions = [
   "All Regions",
   "Metro Atlanta",
-  "North Metro",
-  "East Metro",
-  "South Metro",
-  "West Metro",
 ];
 
 // Services available for filtering
